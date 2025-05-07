@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReadNest.API</name>
+    </assembly>
+    <members>
+        <member name="T:ReadNest.API.Controllers.AuthController">
+            <summary>
+            This class defines the API endpoints related to authentication
+            </summary>
+            <response code="400">If the request is invalid</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.AuthController.#ctor(ReadNest.Domain.Users.Interfaces.IAuthService,Microsoft.Extensions.Logging.ILogger{ReadNest.API.Controllers.AuthController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReadNest.API.Controllers.AuthController"/> class.
+            </summary>
+            <param name="authService">The service responsible for handling authentication related operations</param>
+            <param name="logger">The logger instance for logging messages</param>
+        </member>
+        <member name="M:ReadNest.API.Controllers.AuthController.RegisterUserAsync(ReadNest.Contracts.Users.Requests.UserCreationDto)">
+            <summary>
+            Registers users.
+            </summary>
+            <param name="userDto">The user details required for registration</param>
+            <returns>Returns an HTTP 200 OK response with user details if successful.</returns>
+            <response code="200">If successful</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.AuthController.LoginUserAsync(ReadNest.Contracts.Users.Requests.UserLoginDto)">
+            <summary>
+            Log in users.
+            </summary>
+            <param name="userDto">The user details required for login</param>
+            <returns>Returns an HTTP 200 OK response with user details if successful.</returns>
+            <response code="200">If successful</response>
+            <response code="401">If the user credentials are invalid</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.AuthController.RefreshTokenAsync(ReadNest.Contracts.Users.Requests.RefreshTokenDto)">
+            <summary>
+            Creates and returns a new access token and a new refresh token.
+            </summary>
+            <param name="refreshTokenRequest">Refresh token</param>
+            <returns>Returns an HTTP 200 OK response with user details and tokens if successful.</returns>
+            <response code="200">If successful</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.AuthController.LogoutUserAsync">
+            <summary>
+            Log out users.
+            </summary>
+            <returns>Returns an HTTP 200 OK response, if successful.</returns>
+            <response code="200">If successful</response>
+        </member>
+        <member name="T:ReadNest.API.Controllers.BookLoansController">
+            <summary>
+            This class defines the API endpoints related to Book Loans
+            </summary>
+            <remarks>
+            - Admins can view all book transactions
+            - Members can only view their book transactions
+            - Only members can borrow and return books
+            </remarks>
+            <response code="400">If the request is invalid</response>
+            <response code="401">If the request is unauthenticated</response>
+            <response code="403">If the request is forbidden</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.BookLoansController.#ctor(ReadNest.Domain.BookLoans.Interfaces.IBookLoanService,ReadNest.Domain.Books.Interfaces.IBookService,Microsoft.Extensions.Logging.ILogger{ReadNest.API.Controllers.BookLoansController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReadNest.API.Controllers.BookLoansController"/> class.
+            </summary>
+            <param name="bookLoanService">The service responsible for handling book loan related operations</param>
+            <param name="bookService">The service responsible for handling book related operations</param>
+            <param name="logger">The logger instance for logging messages</param>
+        </member>
+        <member name="M:ReadNest.API.Controllers.BookLoansController.GetBookLoansAsync(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets a paginated list of book loans with optional filtering by user, book, due status and search query.
+            </summary>
+            <param name="userId">Optional filter to retrieve book loans for a specific user</param>
+            <param name="bookId">Optional filter to retrieve book loans for a specific book</param>
+            <param name="isDue">Optional filter to retrieve due book loans</param>
+            <param name="isOverdue">Optional filter to retrieve overdue book loans</param>
+            <param name="searchQuery">Optional search term to filter book loans based on book titles</param>
+            <param name="pageNumber">The page number for pagination (default is 1)</param>
+            <param name="pageSize">The number of books per page (default is 5)</param>
+            <returns>Returns a paginated list of book loans including book details.</returns>
+            <response code="200">If successful</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.BookLoansController.CreateBookLoanAsync(ReadNest.Contracts.BookLoans.Requests.BookLoanCreationDto)">
+            <summary>
+            Creates a new book borrowing transaction
+            </summary>
+            <param name="bookLoan">The details of the book loan</param>
+            <returns>Returns the created book loan transaction details.</returns>
+            <response code="200">If successful</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.BookLoansController.ReturnBookAsync(ReadNest.Contracts.BookLoans.Requests.BookReturnDto)">
+            <summary>
+            Returns a borrowed book.
+            </summary>
+            <param name="bookReturn">The details about the book loan</param>
+            <returns>Returns a 204 No Content response if the return is successful.</returns>
+            <response code="204">If successful</response>
+            <response code="404">If the book loan is not found or already returned</response>
+        </member>
+        <member name="T:ReadNest.API.Controllers.BooksController">
+            <summary>
+            This class defines the API endpoints related to Book
+            </summary>
+            <remarks>
+            - Any user can view books
+            - Only admins can create, update or delete books
+            </remarks>
+            <response code="400">If the request is invalid</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.BooksController.#ctor(ReadNest.Domain.Books.Interfaces.IBookService,Microsoft.Extensions.Logging.ILogger{ReadNest.API.Controllers.BooksController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReadNest.API.Controllers.BooksController"/> class.
+            </summary>
+            <param name="service">The service responsible for handling book-related operations</param>
+            <param name="logger">The logger instance for logging messages</param>
+        </member>
+        <member name="M:ReadNest.API.Controllers.BooksController.GetBooksAsync(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets a paginated list of books with optional filtering and search capabilities.
+            </summary>
+            <param name="title">Filter books by title (optional)</param>
+            <param name="author">Filter books by author name (optional)</param>
+            <param name="genre">Filter books by genre (optional)</param>
+            <param name="isbn">Filter books by ISBN number (optional)</param>
+            <param name="isAvailable">Filter books by availability status (optional)</param>
+            <param name="searchQuery">A general search query that looks for matches in the title, author, genre, ISBN or description(optional)</param>
+            <param name="pageNumber">The page number for pagination (default is 1)</param>
+            <param name="pageSize">The number of books per page (default is 5)</param>
+            <returns>Returns a paginated list of books that match the given filters and search criteria.</returns>
+            <response code="200">If successful</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.BooksController.GetBookByIdAsync(System.Int32)">
+            <summary>
+            Gets a book by its unique identifier.
+            </summary>
+            <param name="id">The unique ID of the book</param>
+            <returns>Returns the requested book if found; otherwise, returns a 404 Not Found response.</returns>
+            <response code="200">If successful</response>
+            <response code="404">If the book is not found</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.BooksController.CreateBookAsync(ReadNest.Contracts.Books.Requests.BookCreationDto)">
+            <summary>
+            Creates a new book entry.
+            </summary>
+            <param name="book">The book details to create</param>
+            <returns>Returns the created book along with a 201 Created response if successful.</returns>
+            <response code="201">If successful</response>
+            <response code="401">If the request is unauthenticated</response>
+            <response code="403">If the request is forbidden</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.BooksController.UpdateBookAsync(System.Int32,ReadNest.Contracts.Books.Requests.BookUpdateDto)">
+            <summary>
+            Updates an existing book entry.
+            </summary>
+            <param name="id">The ID of the book to update</param>
+            <param name="bookToUpdate">The updated book details</param>
+            <returns>Returns the updated book if successful.</returns>
+            <response code="200">If successful</response>
+            <response code="401">If the request is unauthenticated</response>
+            <response code="403">If the request is forbidden</response>
+            <response code="404">If the book is not found</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.BooksController.DeleteBookAsync(System.Int32)">
+            <summary>
+            Deletes a book by its ID.
+            </summary>
+            <param name="id">The ID of the book to delete</param>
+            <returns>Returns a 204 No Content response if the deletion is successful.</returns>
+            <response code="204">If successful</response>
+            <response code="401">If the request is unauthenticated</response>
+            <response code="403">If the request is forbidden</response>
+            <response code="404">If the book is not found</response>
+        </member>
+        <member name="T:ReadNest.API.Controllers.UsersController">
+            <summary>
+            This class defines the API endpoints related to User
+            </summary>
+            <remarks>
+            - Admins can view, update and delete users
+            - Members can only view and update their user details
+            - Members can not delete user accounts
+            </remarks>
+            <response code="400">If the request is invalid</response>
+            <response code="401">If the request is unauthenticated</response>
+            <response code="403">If the request is forbidden</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.UsersController.#ctor(ReadNest.Domain.Users.Interfaces.IUserService,Microsoft.Extensions.Logging.ILogger{ReadNest.API.Controllers.UsersController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReadNest.API.Controllers.UsersController"/> class.
+            </summary>
+            <param name="service">The service responsible for handling user-related operations</param>
+            <param name="logger">The logger instance for logging messages</param>
+        </member>
+        <member name="M:ReadNest.API.Controllers.UsersController.GetUsersAsync(System.String,System.String,System.String,System.Nullable{ReadNest.Contracts.Users.Role},System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets a paginated list of users with optional filtering and search capabilities.
+            </summary>
+            <param name="firstName">Filter users by their first name (optional)</param>
+            <param name="lastName">Filter users by their last name (optional)</param>
+            <param name="email">Filter users by their email address (optional)</param>
+            <param name="role">Filter users by their assigned role (optional)</param>
+            <param name="searchQuery">A general search query that looks for matches in the first name, last name, email, address or contact number (optional)</param>
+            <param name="pageNumber">The page number for pagination (default is 1)</param>
+            <param name="pageSize">The number of users per page (default is 5)</param>
+            <returns>Returns a paginated list of users that match the given filters and search criteria.</returns>
+            <response code="200">If successful</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.UsersController.GetUserByIdAsync(System.Int32)">
+            <summary>
+            Gets a user by their unique identifier.
+            </summary>
+            <param name="id">The unique ID of the user</param>
+            <returns>Returns the requested user if found; otherwise, returns a 404 Not Found response.</returns>
+            <response code="200">If successful</response>
+            <response code="404">If the user is not found</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.UsersController.UpdateUserAsync(System.Int32,ReadNest.Contracts.Users.Requests.UserUpdateDto)">
+            <summary>
+            Updates an existing user entry.
+            </summary>
+            <param name="id">The ID of the user to update</param>
+            <param name="userToUpdate">The updated user details</param>
+            <returns>Returns the updated user if successful.</returns>
+            <response code="200">If successful</response>
+            <response code="404">If the user is not found</response>
+        </member>
+        <member name="M:ReadNest.API.Controllers.UsersController.DeleteUserAsync(System.Int32)">
+            <summary>
+            Deletes a user by their ID.
+            </summary>
+            <param name="id">The ID of the user to delete</param>
+            <returns>Returns a 204 No Content response if the deletion is successful.</returns>
+            <response code="204">If successful</response>
+            <response code="404">If the user is not found</response>
+        </member>
+        <member name="T:ReadNest.API.ExceptionHandlers.CustomErrorResponse">
+            <summary>
+            Provides a centralized way to generate standardized error responses for API controllers.
+            </summary>
+        </member>
+        <member name="M:ReadNest.API.ExceptionHandlers.CustomErrorResponse.ErrorResponse(Microsoft.AspNetCore.Mvc.ControllerBase,System.Int32,System.String)">
+            <summary>
+            Generates a standardized error response based on the provided status code and message.
+            </summary>
+            <param name="controller">The controller from which the response is being sent</param>
+            <param name="statusCode">The HTTP status code for the response</param>
+            <param name="message">The error message to include in the response</param>
+            <returns>An appropriate IActionResult based on the status code</returns>
+        </member>
+        <member name="T:ReadNest.API.ExceptionHandlers.GlobalExceptionHandler">
+            <summary>
+            Global exception handler that catches unhandled exceptions and returns a structured error response.
+            </summary>
+        </member>
+        <member name="M:ReadNest.API.ExceptionHandlers.GlobalExceptionHandler.#ctor(Microsoft.Extensions.Logging.ILogger{ReadNest.API.ExceptionHandlers.GlobalExceptionHandler})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReadNest.API.ExceptionHandlers.GlobalExceptionHandler"/> class.
+            </summary>
+            <param name="logger">Logger instance for recording exception details</param>
+        </member>
+        <member name="M:ReadNest.API.ExceptionHandlers.GlobalExceptionHandler.TryHandleAsync(Microsoft.AspNetCore.Http.HttpContext,System.Exception,System.Threading.CancellationToken)">
+            <summary>
+            Handles unexpected exceptions globally and returns a standardized 500 Internal Server Error response.
+            </summary>
+            <param name="httpContext">The HTTP context of the request</param>
+            <param name="exception">The exception that occurred</param>
+            <param name="cancellationToken">Cancellation token for the asynchronous operation</param>
+            <returns>Returns true to indicate that the exception was handled.</returns>
+        </member>
+    </members>
+</doc>

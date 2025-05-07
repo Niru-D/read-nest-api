@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReadNest.Contracts</name>
+    </assembly>
+    <members>
+        <member name="P:ReadNest.Contracts.Books.BaseBookDto.Title">
+            <summary>
+            The title of the book
+            </summary>
+        </member>
+        <member name="P:ReadNest.Contracts.Books.BaseBookDto.Author">
+            <summary>
+            The author of the book
+            </summary>
+        </member>
+        <member name="P:ReadNest.Contracts.Books.BaseBookDto.Genre">
+            <summary>
+            The genre of the book
+            </summary>
+        </member>
+        <member name="P:ReadNest.Contracts.Books.BaseBookDto.ISBN">
+            <summary>
+            The ISBN of the book
+            </summary>
+        </member>
+        <member name="P:ReadNest.Contracts.Books.BaseBookDto.Description">
+            <summary>
+            An optional description about the book
+            </summary>
+        </member>
+        <member name="P:ReadNest.Contracts.Books.Requests.BookUpdateDto.Id">
+            <summary>
+            The id of the book
+            </summary>
+        </member>
+        <member name="P:ReadNest.Contracts.Books.Requests.BookUpdateDto.IsAvailable">
+            <summary>
+            The availability of the book
+            </summary>
+        </member>
+        <member name="P:ReadNest.Contracts.Books.Responses.BookDto.Id">
+            <summary>
+            The id of the book
+            </summary>
+        </member>
+        <member name="P:ReadNest.Contracts.Books.Responses.BookDto.CreatedAt">
+            <summary>
+            The added date of the book
+            </summary>
+        </member>
+        <member name="P:ReadNest.Contracts.Books.Responses.BookDto.UpdatedAt">
+            <summary>
+            The updated date of the book
+            </summary>
+        </member>
+        <member name="P:ReadNest.Contracts.Books.Responses.BookDto.IsAvailable">
+            <summary>
+            The availability of the book
+            </summary>
+        </member>
+    </members>
+</doc>

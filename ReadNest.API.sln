@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadNest.API", "src\ReadNest.API\ReadNest.API.csproj", "{4616C7C4-81BC-43ED-B3FD-9F81308B8A69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadNest.Contracts", "src\ReadNest.Contracts\ReadNest.Contracts.csproj", "{78C44DAF-DE55-4A74-AF53-AA076AAFB59E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadNest.DataAccessLayer", "src\ReadNest.DataAccessLayer\ReadNest.DataAccessLayer.csproj", "{246F3E4C-283B-49E4-B5F8-FA2F2CB88AC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadNest.Domain", "src\ReadNest.Domain\ReadNest.Domain.csproj", "{B8F7CA92-41B5-4565-ADDE-A55D15572650}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadNest.Services", "src\ReadNest.Services\ReadNest.Services.csproj", "{6D0648DE-44A1-48DD-BFF8-9557BBB2D6EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadNest.Tests", "src\ReadNest.Tests\ReadNest.Tests.csproj", "{F43183FF-36E2-4B5E-B890-D0C1A2F4ACBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4616C7C4-81BC-43ED-B3FD-9F81308B8A69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4616C7C4-81BC-43ED-B3FD-9F81308B8A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4616C7C4-81BC-43ED-B3FD-9F81308B8A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4616C7C4-81BC-43ED-B3FD-9F81308B8A69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C44DAF-DE55-4A74-AF53-AA076AAFB59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C44DAF-DE55-4A74-AF53-AA076AAFB59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C44DAF-DE55-4A74-AF53-AA076AAFB59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C44DAF-DE55-4A74-AF53-AA076AAFB59E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{246F3E4C-283B-49E4-B5F8-FA2F2CB88AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{246F3E4C-283B-49E4-B5F8-FA2F2CB88AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{246F3E4C-283B-49E4-B5F8-FA2F2CB88AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{246F3E4C-283B-49E4-B5F8-FA2F2CB88AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8F7CA92-41B5-4565-ADDE-A55D15572650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F7CA92-41B5-4565-ADDE-A55D15572650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F7CA92-41B5-4565-ADDE-A55D15572650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F7CA92-41B5-4565-ADDE-A55D15572650}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D0648DE-44A1-48DD-BFF8-9557BBB2D6EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D0648DE-44A1-48DD-BFF8-9557BBB2D6EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D0648DE-44A1-48DD-BFF8-9557BBB2D6EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D0648DE-44A1-48DD-BFF8-9557BBB2D6EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F43183FF-36E2-4B5E-B890-D0C1A2F4ACBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F43183FF-36E2-4B5E-B890-D0C1A2F4ACBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F43183FF-36E2-4B5E-B890-D0C1A2F4ACBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F43183FF-36E2-4B5E-B890-D0C1A2F4ACBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE9A9768-3BFE-440A-9416-30550046FF51}
+	EndGlobalSection
+EndGlobal
